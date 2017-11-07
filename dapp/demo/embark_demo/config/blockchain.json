@@ -51,7 +51,8 @@
     "account": {
       "address" : "0xa156b1415502444184670193a8de2b2d7c745634",
       "password": "config/privatenet/password"
-    }
+    },
+    "genesisBlock": "../../../geth/genesis.json"
   },
   "privatenet_b": {
     "enabled": true,
@@ -67,6 +68,7 @@
     "account": {
       "address" : "0xa156b1415502444184670193a8de2b2d7c745634",
       "password": "config/privatenet/password"
-    }
+    },
+    "genesisBlock": "../../../geth/genesis.json"
   }
 }
