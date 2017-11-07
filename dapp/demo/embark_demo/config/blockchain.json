@@ -46,7 +46,7 @@
     "datadir": "../../../geth/",
     "networkId": "102030",
     "bootnodes": "",
-    "nodiscover": false,
+    "nodiscover": true,
     "wsOrigins": "http://localhost:8000",
     "account": {
       "address" : "0xa156b1415502444184670193a8de2b2d7c745634",
@@ -63,7 +63,7 @@
     "datadir": "../../../geth/",
     "networkId": "102030",
     "bootnodes": "",
-    "nodiscover": false,
+    "nodiscover": true,
     "wsOrigins": "http://localhost:8000",
     "account": {
       "address" : "0xa156b1415502444184670193a8de2b2d7c745634",
