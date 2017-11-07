@@ -1,5 +1,28 @@
 {
-  "default": {
+  "privatenet_a": {
+    "versions": {
+      "web3.js": "1.0.0-beta",
+      "solc": "0.4.17"
+    },
+    "deployment": {
+      "host": "localhost",
+      "port": 8101,
+      "type": "rpc"
+    },
+    "dappConnection": [
+      "$WEB3",
+      "http://localhost:8101"
+    ],
+    "gas": "auto",
+    "contracts": {
+      "SimpleStorage": {
+        "args": [
+          100
+        ]
+      }
+    }
+  },
+ "privatenet_b": {
     "versions": {
       "web3.js": "1.0.0-beta",
       "solc": "0.4.17"
