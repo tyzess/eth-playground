@@ -1,14 +1,7 @@
-/geth/geth/chaindata/
-/geth/geth/ethash/
-/geth/geth/lightchaindata/
-/geth/geth/chaindata/*
-/geth/geth/ethash/*
-/geth/geth/lightchaindata/*
-/geth/geth/nodes/
 /geth/geth/*
 /dist/
 /dist/*
 dist/*
 dist/
-/dapp/demo/embark_demo/.embark/*
-/dapp/demo/embark_demo/chains.json
+/dapp/**/.embark/*
+/dapp/**/chains.json
