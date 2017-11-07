@@ -49,6 +49,7 @@
     "nodiscover": false,
     "wsOrigins": "http://localhost:8000",
     "account": {
+      "address" : "0xa156b1415502444184670193a8de2b2d7c745634",
       "password": "config/privatenet/password"
     }
   },
@@ -64,6 +65,7 @@
     "nodiscover": false,
     "wsOrigins": "http://localhost:8000",
     "account": {
+      "address" : "0xa156b1415502444184670193a8de2b2d7c745634",
       "password": "config/privatenet/password"
     }
   }
