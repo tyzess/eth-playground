@@ -8,3 +8,8 @@
 /geth/geth/lightchaindata/*
 /geth/geth/nodes/
 /dist/
+/dist/*
+dist/*
+dist/
+/dapp/demo/embark_demo/.embark/*
+/dapp/demo/embark_demo/chains.json
