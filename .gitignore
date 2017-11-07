@@ -5,6 +5,7 @@
 /geth/geth/ethash/*
 /geth/geth/lightchaindata/*
 /geth/geth/nodes/
+/geth/geth/*
 /dist/
 /dist/*
 dist/*
