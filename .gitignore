@@ -1,0 +1,10 @@
+/geth/keystore/
+/geth/geth/chaindata/
+/geth/geth/ethash/
+/geth/geth/lightchaindata/
+/geth/keystore/*
+/geth/geth/chaindata/*
+/geth/geth/ethash/*
+/geth/geth/lightchaindata/*
+/geth/geth/nodes/
+/dist/

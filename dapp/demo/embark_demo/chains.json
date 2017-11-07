@@ -1,0 +1,11 @@
+{
+  "0x4c8725a9719bf0f94fc63f5c314482a649fd8c946717329d65148f7478a0a62f": {
+    "contracts": {
+      "0x42d970ab0d1c104d23a3fa2816b9689754c6b882ae039a4fd7cb14dde29add51": {
+        "name": "SimpleStorage",
+        "address": "0xbf021b93b6cb11bbf7fce7c92bc0b15d6ee07c60"
+      }
+    },
+    "name": "privatenet"
+  }
+}
