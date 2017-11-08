@@ -4,6 +4,7 @@ pragma solidity ^0.4.7;
 contract TicTacToe {
 
     address player1;
+
     address player2;
 
     uint256 price = 100;
