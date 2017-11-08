@@ -15,7 +15,7 @@ contract Bank {
         }
     }
 
-    function balance() public returns (uint256) {
+    function balance() constant public returns (uint256) {
         return deposits[msg.sender];
     }
 
