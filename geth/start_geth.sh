@@ -17,7 +17,13 @@ if [ -n "$preload_list" ]; then
     preload_cmd='--preload "'$preload_list'" '
 fi
 
-cmd="geth $preload_cmd attach ipc:\"./geth.ipc\""
+
+exec_cmd=""
+if [ -n "$1" ]; then  
+    exec_cmd=" --exec \""$1"\""
+fi
+
+cmd="geth $preload_cmd $exec_cmd attach ipc:\"./geth.ipc\""
 echo $cmd
 eval $cmd
 
