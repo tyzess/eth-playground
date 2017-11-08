@@ -9,7 +9,7 @@ contract Bank {
         deposits[msg.sender] += msg.value;
     }
 
-    function withdraw() public {
+    function withdraw(uint256 value) public {
         msg.sender.send(deposits[msg.sender]);
     }
 
