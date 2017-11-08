@@ -6,23 +6,26 @@ do
   import_dir="dapp_js"
   rm -r -f $import_dir
   mkdir $import_dir
+
+  echo 'web3.eth.defaultAccount = eth.accounts[0]' > $import_dir"/setup_default.js"
+
   import_path=$dapp_path$1"/dist/contracts/*"
   echo $import_path
 	for f in $import_path
 	do
 	  basename=`basename $f`          
-      basename=`echo $basename | sed "s/\.json//g"`
-      basename=`echo $basename | tr '[:upper:]' '[:lower:]'`
+          basename=`echo $basename | sed "s/\.json//g"`
+          basename=`echo $basename | tr '[:upper:]' '[:lower:]'`
 
-      json_object=$basename"_json"
+          json_object=$basename"_json"
 	  contract_object=$basename
           
 	  content=`tr '\n' ' ' < $f`
 	  json_block=$json_object"="$content
-      contract_block=$contract_object"=eth.contract("$json_object".abi).at("$json_object".address)"
+          contract_block=$contract_object"=eth.contract("$json_object".abi).at("$json_object".address)"
 
-      js_path=$import_dir"/"$json_object".js"
-      echo "Create import JS $js_path file..."
+          js_path=$import_dir"/"$json_object".js"
+          echo "Create import JS $js_path file..."
           
 	  echo $json_block"; "$contract_block";" > $js_path
 	done

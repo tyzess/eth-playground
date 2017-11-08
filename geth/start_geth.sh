@@ -16,7 +16,9 @@ if [ -n "$preload_list" ]; then
     preload_list=${preload_list::-1} #remove last character
     preload_cmd='--preload "'$preload_list'" '
 fi
-echo 'geth '$preload_cmd' attach ipc:"./geth.ipc"'
-eval "geth $preload_cmd attach ipc:\"./geth.ipc\""
+
+cmd="geth $preload_cmd attach ipc:\"./geth.ipc\""
+echo $cmd
+eval $cmd
 
 
