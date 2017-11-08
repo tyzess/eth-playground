@@ -9,8 +9,8 @@ contract Bank {
         deposits[msg.sender] += msg.value;
     }
 
-    function withdraw(uint256 value) public {
-        msg.sender.send(deposits[msg.sender]);
+    function withdraw(uint256 value) public payable returns (bool hugeSuccess){
+        retrun msg.sender.send(deposits[msg.sender]);
     }
 
 }
