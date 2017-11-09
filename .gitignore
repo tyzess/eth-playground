@@ -5,3 +5,4 @@ dist/*
 dist/
 /dapp/**/.embark/*
 /dapp/**/chains.json
+/dapp/node_modules/*
