@@ -19,7 +19,7 @@ contract TicTacToeTest {
 
     address owner;
 
-    function TicTacToeTest(){
+    function TicTacToeTest() public {
         owner = msg.sender;
     }
 
