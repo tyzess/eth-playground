@@ -19,6 +19,8 @@ contract TicTacToe {
 
     address owner;
 
+    event NewPlayer(string name, address newPlayer);
+
     function TicTacToe(){
         owner = msg.sender;
         resetGame();
@@ -34,6 +36,7 @@ contract TicTacToe {
         if (allPlayersJoined()) {
             currentTurn = 1;
         }
+        NewPlayer('player', msg.sender);
         return true;
     }
 
