@@ -5,7 +5,7 @@ contract TicTacToe {
 
     address[] players = [0x0, 0x0];
 
-    uint8[][3] board;
+    mapping (uint8 => mapping (uint8 => uint8)) board;
 
     uint8 currentTurn = 0;
 
@@ -36,17 +36,6 @@ contract TicTacToe {
         return true;
     }
 
-    function getBoard() public constant returns (uint8[][] memory r){
-        r = new uint8[](3);
-
-        for (uint8 y = 0; y < FIELD_SIZE; y++) {
-            uint8[] memory pushCol = new uint8[](3);
-            for (uint8 x = 0; x < FIELD_SIZE; x++) {
-                pushCol[x] = board[x][y];
-            }
-            r[y] = (pushCol);
-        }
-    }
 
     function setToken(uint8 x, uint8 y) returns (bool) {
         if (getCurrentPlayer() != msg.sender) {
@@ -169,7 +158,7 @@ contract TicTacToe {
         return amountOfTokens == FIELD_SIZE;
     }
 
-    function getToken(uint8 x, uint8 y) private returns (uint8){
+    function getToken(uint8 x, uint8 y) public constant returns (uint8){
         if (!isInBounds(x) || !isInBounds(y)) {
             throw;
         }
