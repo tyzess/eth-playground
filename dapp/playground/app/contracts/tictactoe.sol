@@ -49,7 +49,7 @@ contract TicTacToe {
 
         board[x][y] = currentTurn;
 
-        if (playerWon(x, y)) {
+        if (playerWon()) {
             payOutWinner();
             resetGame();
         }
@@ -59,12 +59,103 @@ contract TicTacToe {
 
     }
 
-    function playerWon(x, y) private returns (bool){
+    function playerWon() private returns (bool){
+        for (uint8 row = 0; row < 3; row++) {
+            if (getPlayerTokenCountFromRow(row) == 3) {
+                return true;
+            }
+        }
 
+        for (uint8 col = 0; col < 3; col++) {
+            if (getPlayerTokenCountFromCol(col) == 3) {
+                return true;
+            }
+        }
+
+        if (getPlayerTokenCountFromDiag1() == 3) {
+            return true;
+        }
+
+        if (getPlayerTokenCountFromDiag2() == 3) {
+            return true;
+        }
+
+        return false;
     }
 
-    function getPlayerTokenCountFromRow(){
+    function getPlayerTokenCountFromRow(uint8 row) private returns (uint8){
+        uint8 count = 0;
+        if (isInBounds(row)) {
+            for (uint col = 0; col < 3; col++) {
+                int8 token = getToken(col, row);
+                if (token == currentTurn) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
 
+    function getPlayerTokenCountFromCol(uint8 col) private returns (uint8){
+        uint8 count = 0;
+        if (isInBounds(col)) {
+            for (uint row = 0; row < 3; row++) {
+                int8 token = getToken(col, row);
+                if (token == currentTurn) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    function getPlayerTokenCountFromDiag1() private returns (uint8){
+        uint8 count = 0;
+
+        int8 token = getToken(0, 0);
+        if (token == currentTurn) {
+            count++;
+        }
+
+        token = getToken(1, 1);
+        if (token == currentTurn) {
+            count++;
+        }
+
+        token = getToken(2, 2);
+        if (token == currentTurn) {
+            count++;
+        }
+
+        return count;
+    }
+
+    function getPlayerTokenCountFromDiag2() private returns (uint8){
+        uint8 count = 0;
+
+        int8 token = getToken(2, 0);
+        if (token == currentTurn) {
+            count++;
+        }
+
+        token = getToken(1, 1);
+        if (token == currentTurn) {
+            count++;
+        }
+
+        token = getToken(0, 2);
+        if (token == currentTurn) {
+            count++;
+        }
+
+        return count;
+    }
+
+    function getToken(uint8 x, uint8 y) private returns (int8){
+        if (!isInBounds(x) || !isInBounds(y)) {
+            return - 1;
+        }
+        return board[x][y];
     }
 
     function resetGame() private {
