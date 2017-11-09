@@ -5,7 +5,7 @@ contract TicTacToe {
 
     address[] players = [0x0, 0x0];
 
-    mapping (uint8 => mapping (uint8 => uint8)) board;
+    uint8[][] board = new uint8[][](3);
 
     uint8 public MAX_PLAYERS = 2;
 
@@ -19,8 +19,11 @@ contract TicTacToe {
 
     address public owner;
 
+    event NewPlayer(string name, address newPlayer);
+
     function TicTacToe(){
         owner = msg.sender;
+        resetGame();
     }
 
     function join() payable returns (bool){
@@ -33,9 +36,9 @@ contract TicTacToe {
         if (allPlayersJoined()) {
             currentTurn = 1;
         }
+        NewPlayer('player', msg.sender);
         return true;
     }
-
 
     function setToken(uint8 x, uint8 y) returns (bool) {
         if (getCurrentPlayer() != msg.sender) {
@@ -61,7 +64,6 @@ contract TicTacToe {
         }
 
         return true;
-
     }
 
     function playerWon() private returns (bool){
@@ -167,17 +169,15 @@ contract TicTacToe {
         return board[x][y];
     }
 
-    function payOutWinner(address winner) {
+    function payOutWinner(address winner) private {
         winner.send(price * 2);
     }
 
     function resetGame() private {
         currentTurn = 0;
         players = [0x0, 0x0];
-        for (uint8 x = 0; x < FIELD_SIZE; x++) {
-            for (uint8 y = 0; y < FIELD_SIZE; y++) {
-                board[x][y] = 0;
-            }
+        for (uint i = 0; i < board.length; i++) {
+            board[i] = new uint8[](3);
         }
     }
 
