@@ -88,7 +88,7 @@ contract TicTacToe {
     function getPlayerTokenCountFromRow(uint8 row) private returns (uint8){
         uint8 count = 0;
         if (isInBounds(row)) {
-            for (uint col = 0; col < FIELD_SIZE; col++) {
+            for (uint8 col = 0; col < FIELD_SIZE; col++) {
                 int8 token = getToken(col, row);
                 if (token == currentTurn) {
                     count++;
@@ -101,7 +101,7 @@ contract TicTacToe {
     function getPlayerTokenCountFromCol(uint8 col) private returns (uint8){
         uint8 count = 0;
         if (isInBounds(col)) {
-            for (uint row = 0; row < FIELD_SIZE; row++) {
+            for (uint8 row = 0; row < FIELD_SIZE; row++) {
                 int8 token = getToken(col, row);
                 if (token == currentTurn) {
                     count++;
