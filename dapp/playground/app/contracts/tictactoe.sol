@@ -24,7 +24,7 @@ contract TicTacToe {
         resetGame();
     }
 
-    function join() payable returns (bool){
+    function join() payable constant returns (bool){
         if (msg.value != price || allPlayersJoined()) {
             return false;
         }
@@ -37,7 +37,7 @@ contract TicTacToe {
         return true;
     }
 
-    function setToken(uint8 x, uint8 y) returns (bool) {
+    function setToken(uint8 x, uint8 y) constant returns (bool) {
         if (getCurrentPlayer() != msg.sender) {
             return false;
         }
@@ -158,14 +158,14 @@ contract TicTacToe {
         return amountOfTokens == FIELD_SIZE;
     }
 
-    function getToken(uint8 x, uint8 y) private returns (uint8){
+    function getToken(uint8 x, uint8 y) constant public returns (uint8){
         if (!isInBounds(x) || !isInBounds(y)) {
             throw;
         }
         return board[x][y];
     }
 
-    function payOutWinner(address winner) {
+    function payOutWinner(address winner) private {
         winner.send(price * 2);
     }
 
