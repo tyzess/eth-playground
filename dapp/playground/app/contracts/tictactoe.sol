@@ -5,7 +5,7 @@ contract TicTacToe {
 
     address[] players = [0x0, 0x0];
 
-    mapping (uint8 => mapping (uint8 => uint8)) board;
+    uint8[3]][3] board;
 
     uint8 currentTurn = 0;
 
@@ -21,6 +21,7 @@ contract TicTacToe {
 
     function TicTacToe(){
         owner = msg.sender;
+        resetGame();
     }
 
     function join() payable returns (bool){
