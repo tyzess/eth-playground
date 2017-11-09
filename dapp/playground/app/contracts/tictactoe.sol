@@ -1,7 +1,7 @@
 pragma solidity ^0.4.7;
 
 
-contract ticTacToe {
+contract TicTacToe {
 
     address[] players = [0x0, 0x0];
 
@@ -17,7 +17,7 @@ contract ticTacToe {
 
     address owner;
 
-    function ticTacToe(){
+    function TicTacToe(){
         owner = msg.sender;
     }
 
