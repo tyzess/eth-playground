@@ -50,7 +50,7 @@ contract TicTacToe {
         board[x][y] = currentTurn;
 
         if (playerWon()) {
-            payOutWinner();
+            payOutWinner(getCurrentPlayer());
             resetGame();
         }
         else {
@@ -156,6 +156,10 @@ contract TicTacToe {
             return - 1;
         }
         return board[x][y];
+    }
+
+    function payOutWinner(address winner) {
+        winner.send(price * 2);
     }
 
     function resetGame() private {
