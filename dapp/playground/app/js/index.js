@@ -14,7 +14,7 @@ $(document).ready(function () {
         TicTacToe.join().set({from: web3.eth.defaultAccount, value: 100}).then(function(result) {alert("Joined: " + result )});
     });
 
-    $("#blockchain button.set").click(function () {
+    $("#tictactoe button.set").click(function () {
         // var value = parseInt($("#blockchain input.text").val(), 10);
 
         // If web3.js 1.0 is being used
