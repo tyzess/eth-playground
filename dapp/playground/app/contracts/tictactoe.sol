@@ -21,12 +21,10 @@ contract TicTacToe {
         owner = msg.sender;
     }
 
-    function join() constant payable returns (bool){
+    function join() payable returns (bool){
         if (msg.value != price || allPlayersJoined()) {
             return false;
         }
-
-        //TODO init a countdown and pay funds back if no other player joins
 
         players[playerCount] = msg.sender;
         playerCount++;
@@ -45,15 +43,29 @@ contract TicTacToe {
             return false;
         }
 
-        //TODO settoken
+        if (isAlreadySet(x, y)) {
+            return false;
+        }
+
         board[x][y] = currentTurn;
 
-        nextTurn();
+        if (playerWon()) {
+            payOutWinner();
+            resetGame();
+        }
+        else {
+            nextTurn();
+        }
+
     }
 
-    function isInBounds(uint8 x) private returns () {
+    function isInBounds(uint8 x) private returns (bool) {
         return x >= 0 && x < 3;
         //TODO hardcoded
+    }
+
+    function isAlreadySet(uint x, uint y) private returns (bool){
+        return board[x][y] == - 1;
     }
 
     function allPlayersJoined() private returns (bool) {
