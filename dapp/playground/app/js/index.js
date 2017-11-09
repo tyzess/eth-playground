@@ -9,13 +9,18 @@
 // ===========================
 $(document).ready(function () {
 
-    TicTacToe.events.NewPlayer(function (error, result) {
-        console.log("Player joined: " + result.args.newPlayer);
+    $("#tictactoe button.start").click(function () {
+        console.log("Listening");
+        TicTacToe.events.NewPlayer(function (error, result) {
+            console.log("Player joined: " + result.args.newPlayer);
+        });
     });
 
     $("#tictactoe button.join").click(function () {
         console.log("Clicked on Join");
-        TicTacToe.methods.join().send({from: web3.eth.defaultAccount, value: 100}).then(function(result) {console.log(result)});
+        TicTacToe.methods.join().send({from: web3.eth.defaultAccount, value: 100}).then(function (result) {
+            console.log(result)
+        });
     });
 
     $("#tictactoe button.set").click(function () {
