@@ -5,7 +5,7 @@ contract TicTacToe {
 
     address[] players = [0x0, 0x0];
 
-    uint[][] board = new uint[][](3);
+    uint8[][] board = new uint8[][](3);
 
     uint8 currentTurn = 0;
 
@@ -173,7 +173,7 @@ contract TicTacToe {
         currentTurn = 0;
         players = [0x0, 0x0];
         for (uint i = 0; i < board.length; i++)
-            board[i] = new uint[](3);
+            board[i] = new uint8[](3);
     }
 
     function isInBounds(uint8 x) private returns (bool) {

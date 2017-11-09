@@ -13,13 +13,8 @@
       "$WEB3",
       "http://localhost:8101"
     ],
-    "gas": "auto",
+    "gas": "2100000",
     "contracts": { 
-      "Greeter": {
-        "args": [
-          "hallo du loeli"
-        ]
-      }     
     }
   },
  "privatenet_b": {
@@ -36,13 +31,8 @@
       "$WEB3",
       "http://localhost:8102"
     ],
-    "gas": "auto",
+    "gas": "2100000",
     "contracts": {   
-      "Greeter": {
-        "args": [
-          "hallo du loeli"
-        ]
-      }   
     }
   }
 }
