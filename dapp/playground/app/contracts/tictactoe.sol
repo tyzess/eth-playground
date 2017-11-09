@@ -37,7 +37,7 @@ contract TicTacToe {
     }
 
 
-    function setToken(uint8 x, uint8 y) returns (bool) {
+    function setToken(uint8 x, uint8 y) constant returns (bool) {
         if (getCurrentPlayer() != msg.sender) {
             return false;
         }
@@ -59,6 +59,8 @@ contract TicTacToe {
         else {
             nextTurn();
         }
+
+        return true;
 
     }
 
