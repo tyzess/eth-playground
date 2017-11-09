@@ -49,7 +49,7 @@ contract TicTacToe {
 
         board[x][y] = currentTurn;
 
-        if (playerWon(x,y)) {
+        if (playerWon(x, y)) {
             payOutWinner();
             resetGame();
         }
@@ -59,7 +59,7 @@ contract TicTacToe {
 
     }
 
-    function playerWon(x,y) private returns (bool){
+    function playerWon(x, y) private returns (bool){
 
     }
 
