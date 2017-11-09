@@ -36,6 +36,16 @@ contract TicTacToe {
         return true;
     }
 
+    function getBoard() private constant returns (uint8[][]){
+        uint8[3][3] currentBoard = new uint8()[3][3];
+        for (uint8 x = 0; x < FIELD_SIZE; x++) {
+            for (uint8 y = 0; y < FIELD_SIZE; y++) {
+                currentBoard[x][y] = board[x][y];
+            }
+        }
+        return currentBoard;
+    }
+
     function setToken(uint8 x, uint8 y) returns (bool) {
         if (getCurrentPlayer() != msg.sender) {
             return false;
