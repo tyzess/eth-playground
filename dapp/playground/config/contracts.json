@@ -13,16 +13,16 @@
       "$WEB3",
       "http://localhost:8101"
     ],
-    "gas": "auto",
-    "contracts": { 
+    "gas": 200000,
+    "contracts": {
       "Greeter": {
         "args": [
           "hallo du loeli"
         ]
-      }     
+      }
     }
   },
- "privatenet_b": {
+  "privatenet_b": {
     "versions": {
       "web3.js": "1.0.0-beta",
       "solc": "0.4.17"
@@ -36,13 +36,13 @@
       "$WEB3",
       "http://localhost:8102"
     ],
-    "gas": "auto",
-    "contracts": {   
+    "gas": 200000,
+    "contracts": {
       "Greeter": {
         "args": [
           "hallo du loeli"
         ]
-      }   
+      }
     }
   }
 }
