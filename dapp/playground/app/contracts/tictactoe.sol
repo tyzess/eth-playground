@@ -190,11 +190,11 @@ contract TicTacToe {
         return board[x][y] != 0;
     }
 
-    function allPlayersJoined() private returns (bool) {
+    function allPlayersJoined() public constant returns (bool) {
         return playerCount == MAX_PLAYERS;
     }
 
-    function getCurrentPlayer() private returns (address) {
+    function getCurrentPlayer() public constant returns (address) {
         return players[currentTurn];
     }
 
