@@ -36,8 +36,13 @@ contract TicTacToe {
         return true;
     }
 
-    function getBoard() public constant returns (uint8[][3] r){
-        r = board;
+    function getBoard() public constant returns (uint8[][] memory r){
+        r = new uint8[][](3, 3);
+        for (uint8 x = 0; x < FIELD_SIZE; x++) {
+            for (uint8 y = 0; y < FIELD_SIZE; y++) {
+                r[x][y] = board[x][y];
+            }
+        }
     }
 
     function setToken(uint8 x, uint8 y) returns (bool) {
