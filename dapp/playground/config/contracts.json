@@ -13,7 +13,7 @@
       "$WEB3",
       "http://localhost:8101"
     ],
-    "gas": 200000,
+    "gas": 2000000,
     "contracts": {
       "Greeter": {
         "args": [
@@ -36,7 +36,7 @@
       "$WEB3",
       "http://localhost:8102"
     ],
-    "gas": 200000,
+    "gas": 2000000,
     "contracts": {
       "Greeter": {
         "args": [
