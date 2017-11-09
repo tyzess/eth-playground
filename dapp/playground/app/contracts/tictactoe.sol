@@ -24,9 +24,9 @@ contract TicTacToe {
     }
 
     function join() payable returns (bool){
-        if (msg.value != price || allPlayersJoined()) {
-            return false;
-        }
+        //        if (msg.value != price || allPlayersJoined()) {
+        //            return false;
+        //        }
 
         playerCount++;
         players[playerCount] = msg.sender;
