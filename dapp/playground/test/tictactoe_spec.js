@@ -12,22 +12,22 @@ describe("TicTacToe", function () {
 
     it("should call constructor", function (done) {
 
-        TicTagToe.MAX_PLAYERS(function (err, result) {
+        TicTacToe.MAX_PLAYERS(function (err, result) {
             assert.equal(result.toNumber(), 2);
             done();
         });
 
-        TicTagToe.FIELD_SIZE(function (err, result) {
+        TicTacToe.FIELD_SIZE(function (err, result) {
             assert.equal(result.toNumber(), 3);
             done();
         });
 
-        TicTagToe.currentTurn(function (err, result) {
+        TicTacToe.currentTurn(function (err, result) {
             assert.equal(result.toNumber(), 0);
             done();
         });
 
-        TicTagToe.playerCount(function (err, result) {
+        TicTacToe.playerCount(function (err, result) {
             assert.equal(result.toNumber(), 0);
             done();
         });
