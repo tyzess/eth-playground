@@ -3,6 +3,8 @@ pragma solidity ^0.4.7;
 
 contract TicTacToe {
 
+    int8 version = 1;
+
     address[] players = [0x0, 0x0];
 
     uint8[][] board = new uint8[][](3);
