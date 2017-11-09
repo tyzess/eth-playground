@@ -5,7 +5,7 @@ contract TicTacToe {
 
     address[] players = [0x0, 0x0];
 
-    uint8[3][3] board = new uint8[][](0);
+    uint8[][] board = new uint8[3][3]();
 
     uint8 currentTurn = 0;
 
