@@ -5,7 +5,7 @@ contract TicTacToe {
 
     address[] players = [0x0, 0x0];
 
-    uint8[3][3] memory board;
+    mapping (uint8 => mapping (uint8 => uint8)) board;
 
     uint8 currentTurn = 0;
 
@@ -170,8 +170,12 @@ contract TicTacToe {
 
     function resetGame() private {
         currentTurn = 0;
-        board = new uint8[][](0);
         players = [0x0, 0x0];
+        for (uint8 x = 0; x < FIELD_SIZE; x++) {
+            for (uint8 y = 0; y < FIELD_SIZE; y++) {
+                board[x][y] = 0;
+            }
+        }
     }
 
     function isInBounds(uint8 x) private returns (bool) {
@@ -180,7 +184,7 @@ contract TicTacToe {
     }
 
     function isAlreadySet(uint8 x, uint8 y) private returns (bool){
-        return board[x][y] == 0;
+        return board[x][y] != 0;
     }
 
     function allPlayersJoined() private returns (bool) {
