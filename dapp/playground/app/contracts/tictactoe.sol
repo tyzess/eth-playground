@@ -5,13 +5,13 @@ contract TicTacToe {
 
     address[] players = [0x0, 0x0];
 
-    int8[][] board = [[- 1, - 1, - 1], [- 1, - 1, - 1], [- 1, - 1, - 1]];
+    uint8[][] board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
 
     uint8 currentTurn = 0;
 
     uint8 playerCount = 0;
 
-    int8 MAX_PLAYERS = 2;
+    uint8 MAX_PLAYERS = 2;
 
     uint256 price = 100;
 
@@ -31,7 +31,7 @@ contract TicTacToe {
         playerCount++;
         players[playerCount] = msg.sender;
         if (allPlayersJoined()) {
-            currentTurn = 0;
+            currentTurn = 1;
         }
         return true;
     }
@@ -89,7 +89,7 @@ contract TicTacToe {
         uint8 count = 0;
         if (isInBounds(row)) {
             for (uint8 col = 0; col < FIELD_SIZE; col++) {
-                int8 token = getToken(col, row);
+                uint8 token = getToken(col, row);
                 if (token == currentTurn) {
                     count++;
                 }
@@ -102,7 +102,7 @@ contract TicTacToe {
         uint8 count = 0;
         if (isInBounds(col)) {
             for (uint8 row = 0; row < FIELD_SIZE; row++) {
-                int8 token = getToken(col, row);
+                uint8 token = getToken(col, row);
                 if (token == currentTurn) {
                     count++;
                 }
@@ -157,9 +157,9 @@ contract TicTacToe {
         return amountOfTokens == FIELD_SIZE;
     }
 
-    function getToken(uint8 x, uint8 y) private returns (int8){
+    function getToken(uint8 x, uint8 y) private returns (uint8){
         if (!isInBounds(x) || !isInBounds(y)) {
-            return - 1;
+            throw;
         }
         return board[x][y];
     }
@@ -170,7 +170,7 @@ contract TicTacToe {
 
     function resetGame() private {
         currentTurn = 0;
-        board = [[- 1, - 1, - 1], [- 1, - 1, - 1], [- 1, - 1, - 1]];
+        board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
         players = [0x0, 0x0];
     }
 
@@ -179,12 +179,12 @@ contract TicTacToe {
         //TODO hardcoded
     }
 
-    function isAlreadySet(uint x, uint y) private returns (bool){
-        return board[x][y] == - 1;
+    function isAlreadySet(uint8 x, uint8 y) private returns (bool){
+        return board[x][y] == 0;
     }
 
     function allPlayersJoined() private returns (bool) {
-        return playerCount >= MAX_PLAYERS;
+        return playerCount == MAX_PLAYERS;
     }
 
     function getCurrentPlayer() private returns (address) {
@@ -193,7 +193,7 @@ contract TicTacToe {
 
     function nextTurn() private {
         currentTurn++;
-        if (currentTurn >= MAX_PLAYERS) {
+        if (currentTurn > MAX_PLAYERS) {
             currentTurn = 0;
         }
     }
