@@ -50,13 +50,21 @@ contract TicTacToe {
 
         board[x][y] = currentTurn;
 
-        if (playerWon()) {
+        if (playerWon(x,y)) {
             payOutWinner();
             resetGame();
         }
         else {
             nextTurn();
         }
+
+    }
+
+    function playerWon(x,y) private returns (bool){
+
+    }
+
+    function getPlayerTokenCountFromRow(){
 
     }
 
