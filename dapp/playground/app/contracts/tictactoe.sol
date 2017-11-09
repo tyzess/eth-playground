@@ -172,7 +172,7 @@ contract TicTacToe {
         winner.send(price * 2);
     }
 
-    function resetGame() public {
+    function resetGame() private {
         currentTurn = 0;
         players = [0x0, 0x0];
         for (uint i = 0; i < board.length; i++) {
