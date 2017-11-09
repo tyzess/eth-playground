@@ -1,0 +1,6 @@
+preload: /home/zcoin/zcoin/geth/dapp_js/bank_json.js
+preload: /home/zcoin/zcoin/geth/dapp_js/greeter_json.js
+preload: /home/zcoin/zcoin/geth/dapp_js/setup_default.js
+preload: /home/zcoin/zcoin/geth/dapp_js/suicide_json.js
+geth --preload "/home/zcoin/zcoin/geth/dapp_js/bank_json.js,/home/zcoin/zcoin/geth/dapp_js/greeter_json.js,/home/zcoin/zcoin/geth/dapp_js/setup_default.js,/home/zcoin/zcoin/geth/dapp_js/suicide_json.js" --exec "JSON.stringify(bank_json.abi)" attach ipc:"./geth.ipc"
+"[{\"constant\":false,\"inputs\":[],\"name\":\"withdraw\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"deposit\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"}]"

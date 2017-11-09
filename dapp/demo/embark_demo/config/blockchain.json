@@ -12,8 +12,7 @@
     "rpcCorsDomain": "http://localhost:8000",
     "account": {
       "password": "config/development/password"
-    },
-    "wsOrigins": "http://localhost:8000"
+    }
   },
   "testnet": {
     "enabled": true,
@@ -37,41 +36,14 @@
       "password": "config/livenet/password"
     }
   },
-  "privatenet_a": {
+  "privatenet": {
     "enabled": true,
     "networkType": "custom",
     "rpcHost": "localhost",
-    "rpcPort": 8101,
+    "rpcPort": 8545,
     "rpcCorsDomain": "http://localhost:8000",
-    "datadir": "../../../geth/",
-    "networkId": "102030",
-    "bootnodes": "",
-    "nodiscover": true,
-    "wsOrigins": "http://localhost:8000",
-    "account": {
-      "address" : "0xa156b1415502444184670193a8de2b2d7c745634",
-      "password": "config/privatenet/password"
-    },
-    "genesisBlock": "../../../geth/genesis.json",
-    "port":30301
-  },
-  "privatenet_b": {
-    "enabled": true,
-    "networkType": "custom",
-    "rpcHost": "localhost",
-    "rpcPort": 8102,
-    "rpcCorsDomain": "http://localhost:8000",
-    "datadir": "../../../geth/",
-    "networkId": "102030",
-    "bootnodes": "",
-    "nodiscover": true,
-    "wsOrigins": "http://localhost:8000",
-    "account": {
-      "address" : "0xa156b1415502444184670193a8de2b2d7c745634",
-      "password": "config/privatenet/password"
-    },
-    "genesisBlock": "../../../geth/genesis.json",   
-    "port":30302
-
+    "datadir": "yourdatadir",
+    "networkId": "123",
+    "bootnodes": ""
   }
 }
