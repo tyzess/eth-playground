@@ -5,7 +5,7 @@ contract TicTacToeTest {
 
     address[] players = [0x0, 0x0];
 
-    uint8[3][] board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+    uint8[3][3] memory board;
 
     uint8 currentTurn = 0;
 
