@@ -11,7 +11,7 @@ $(document).ready(function () {
 
     $("#tictactoe button.start").click(function () {
         console.log("Listening");
-        var newPlayerEvents = TicTacToe.events.NewPlayer({fromBlock: 0, toBlock: 'latest'});
+        var newPlayerEvents = TicTacToe.events.NewPlayer({}, {fromBlock: 0, toBlock: 'latest'});
 
         newPlayerEvents.watch(function (error, result) {
             console.log("Player joined: " + result.args.newPlayer);
