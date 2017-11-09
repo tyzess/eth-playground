@@ -114,7 +114,7 @@ contract TicTacToe {
     function getPlayerTokenCountFromDiag1() private returns (uint8){
         uint8 count = 0;
 
-        int8 token = getToken(0, 0);
+        uint8 token = getToken(0, 0);
         if (token == currentTurn) {
             count++;
         }
@@ -135,7 +135,7 @@ contract TicTacToe {
     function getPlayerTokenCountFromDiag2() private returns (uint8){
         uint8 count = 0;
 
-        int8 token = getToken(2, 0);
+        uint8 token = getToken(2, 0);
         if (token == currentTurn) {
             count++;
         }
