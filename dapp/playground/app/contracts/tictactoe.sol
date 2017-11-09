@@ -9,7 +9,7 @@ contract TicTacToe {
 
     uint8 currentTurn = 0;
 
-    uint8 playerCount = 0;
+    uint8 public playerCount = 0;
 
     uint8 MAX_PLAYERS = 2;
 
