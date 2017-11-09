@@ -21,12 +21,12 @@ contract TicTacToe {
 
     event NewPlayer(string name, address newPlayer);
 
-    function TicTacToe(){
+    function TicTacToe() public {
         owner = msg.sender;
         resetGame();
     }
 
-    function join() payable returns (bool){
+    function join() public payable returns (bool){
         if (msg.value != price || allPlayersJoined()) {
             return false;
         }
@@ -40,7 +40,7 @@ contract TicTacToe {
         return true;
     }
 
-    function setToken(uint8 x, uint8 y) returns (bool) {
+    function setToken(uint8 x, uint8 y) public returns (bool) {
         if (getCurrentPlayer() != msg.sender) {
             return false;
         }
@@ -90,7 +90,7 @@ contract TicTacToe {
         return false;
     }
 
-    function getPlayerTokenCountFromRow(uint8 row) private returns (uint8){
+    function getPlayerTokenCountFromRow(uint8 row) private view returns (uint8){
         uint8 count = 0;
         if (isInBounds(row)) {
             for (uint8 col = 0; col < FIELD_SIZE; col++) {
@@ -103,7 +103,7 @@ contract TicTacToe {
         return count;
     }
 
-    function getPlayerTokenCountFromCol(uint8 col) private returns (uint8){
+    function getPlayerTokenCountFromCol(uint8 col) private view returns (uint8){
         uint8 count = 0;
         if (isInBounds(col)) {
             for (uint8 row = 0; row < FIELD_SIZE; row++) {
@@ -116,7 +116,7 @@ contract TicTacToe {
         return count;
     }
 
-    function getPlayerTokenCountFromDiag1() private returns (uint8){
+    function getPlayerTokenCountFromDiag1() private view returns (uint8){
         uint8 count = 0;
 
         uint8 token = getToken(0, 0);
@@ -137,7 +137,7 @@ contract TicTacToe {
         return count;
     }
 
-    function getPlayerTokenCountFromDiag2() private returns (uint8){
+    function getPlayerTokenCountFromDiag2() private view returns (uint8){
         uint8 count = 0;
 
         uint8 token = getToken(2, 0);
@@ -158,13 +158,13 @@ contract TicTacToe {
         return count;
     }
 
-    function isNeededAmountOfTokensToWin(uint8 amountOfTokens) private returns (bool){
+    function isNeededAmountOfTokensToWin(uint8 amountOfTokens) private view returns (bool){
         return amountOfTokens == FIELD_SIZE;
     }
 
     function getToken(uint8 x, uint8 y) public constant returns (uint8){
         if (!isInBounds(x) || !isInBounds(y)) {
-            throw;
+            revert();
         }
         return board[x][y];
     }
