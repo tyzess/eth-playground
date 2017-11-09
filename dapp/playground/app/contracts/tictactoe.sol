@@ -18,6 +18,7 @@ contract TicTacToe {
     address owner;
 
     function TicTacToe(){
+
         owner = msg.sender;
     }
 
