@@ -21,7 +21,7 @@ contract TicTacToe {
 
     address public owner;
 
-    event NewPlayer(string name, address newPlayer);
+    event NewPlayer(address newPlayer);
 
     function TicTacToe() public {
         owner = msg.sender;
@@ -35,10 +35,10 @@ contract TicTacToe {
 
         players[playerCount] = msg.sender;
         playerCount++;
+        NewPlayer(msg.sender);
         if (allPlayersJoined()) {
             currentTurn = 1;
         }
-        NewPlayer('player', msg.sender);
         return true;
     }
 
