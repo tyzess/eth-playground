@@ -7,11 +7,11 @@ contract TicTacToe {
 
     int8[][] board = [[- 1, - 1, - 1], [- 1, - 1, - 1], [- 1, - 1, - 1]];
 
-    int8 currentTurn = - 1;
+    uint8 currentTurn = 0;
 
     uint8 playerCount = 0;
 
-    uint8 MAX_PLAYERS = 2;
+    int8 MAX_PLAYERS = 2;
 
     uint256 price = 100;
 
@@ -28,8 +28,8 @@ contract TicTacToe {
             return false;
         }
 
-        players[playerCount] = msg.sender;
         playerCount++;
+        players[playerCount] = msg.sender;
         if (allPlayersJoined()) {
             currentTurn = 0;
         }
@@ -169,7 +169,7 @@ contract TicTacToe {
     }
 
     function resetGame() private {
-        currentTurn = - 1;
+        currentTurn = 0;
         board = [[- 1, - 1, - 1], [- 1, - 1, - 1], [- 1, - 1, - 1]];
         players = [0x0, 0x0];
     }
