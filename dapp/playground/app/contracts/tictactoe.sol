@@ -7,17 +7,17 @@ contract TicTacToe {
 
     mapping (uint8 => mapping (uint8 => uint8)) board;
 
+    uint8 public MAX_PLAYERS = 2;
+
+    uint8 public FIELD_SIZE = 3;
+
     uint8 public currentTurn = 0;
 
     uint8 public playerCount = 0;
 
-    uint8 MAX_PLAYERS = 2;
+    uint256 public price = 100;
 
-    uint256 price = 100;
-
-    uint8 FIELD_SIZE = 3;
-
-    address owner;
+    address public owner;
 
     function TicTacToe(){
         owner = msg.sender;
