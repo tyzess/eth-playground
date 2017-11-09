@@ -181,12 +181,12 @@ contract TicTacToe {
         }
     }
 
-    function isInBounds(uint8 x) private returns (bool) {
+    function isInBounds(uint8 x) private view returns (bool) {
         return x >= 0 && x < FIELD_SIZE;
         //TODO hardcoded
     }
 
-    function isAlreadySet(uint8 x, uint8 y) private returns (bool){
+    function isAlreadySet(uint8 x, uint8 y) private view returns (bool){
         return board[x][y] != 0;
     }
 
@@ -207,7 +207,7 @@ contract TicTacToe {
 
     function killTheBank() public {
         if (msg.sender != owner) {
-            throw;
+            revert();
         }
         selfdestruct(owner);
     }
