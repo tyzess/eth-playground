@@ -7,7 +7,7 @@ contract TicTacToe {
 
     mapping (uint8 => mapping (uint8 => uint8)) board;
 
-    uint8 currentTurn = 0;
+    uint8 public currentTurn = 0;
 
     uint8 public playerCount = 0;
 
@@ -37,7 +37,7 @@ contract TicTacToe {
     }
 
 
-    function setToken(uint8 x, uint8 y) constant returns (bool) {
+    function setToken(uint8 x, uint8 y) returns (bool) {
         if (getCurrentPlayer() != msg.sender) {
             return false;
         }
