@@ -18,7 +18,6 @@ contract TicTacToe {
     address owner;
 
     function TicTacToe(){
-
         owner = msg.sender;
     }
 
@@ -66,6 +65,14 @@ contract TicTacToe {
 
     function getPlayerTokenCountFromRow(){
 
+    }
+
+    function resetGame() private {
+        player1 = 0x0;
+        player2 = 0x0;
+        currentTurn = - 1;
+        board = [[- 1, - 1, - 1], [- 1, - 1, - 1], [- 1, - 1, - 1]];
+        players = [0x0, 0x0];
     }
 
     function isInBounds(uint8 x) private returns (bool) {
