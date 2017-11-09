@@ -28,8 +28,8 @@ contract TicTacToe {
         //            return false;
         //        }
 
-        playerCount++;
         players[playerCount] = msg.sender;
+        playerCount++;
         if (allPlayersJoined()) {
             currentTurn = 1;
         }
