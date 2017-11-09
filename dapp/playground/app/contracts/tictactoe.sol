@@ -66,7 +66,7 @@ contract TicTacToe {
         return true;
     }
 
-    function playerWon() private returns (bool){
+    function playerWon() private view returns (bool){
         for (uint8 row = 0; row < FIELD_SIZE; row++) {
             if (isNeededAmountOfTokensToWin(getPlayerTokenCountFromRow(row))) {
                 return true;
@@ -170,7 +170,7 @@ contract TicTacToe {
     }
 
     function payOutWinner(address winner) private {
-        winner.send(price * 2);
+        winner.transfer(price * 2);
     }
 
     function resetGame() private {
