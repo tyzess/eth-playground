@@ -15,6 +15,8 @@ contract TicTacToe {
 
     uint256 price = 100;
 
+    uint8 FIELD_SIZE = 3;
+
     address owner;
 
     function TicTacToe(){
@@ -60,23 +62,23 @@ contract TicTacToe {
     }
 
     function playerWon() private returns (bool){
-        for (uint8 row = 0; row < 3; row++) {
-            if (getPlayerTokenCountFromRow(row) == 3) {
+        for (uint8 row = 0; row < FIELD_SIZE; row++) {
+            if (isNeededAmountOfTokensToWin(getPlayerTokenCountFromRow(row))) {
                 return true;
             }
         }
 
-        for (uint8 col = 0; col < 3; col++) {
-            if (getPlayerTokenCountFromCol(col) == 3) {
+        for (uint8 col = 0; col < FIELD_SIZE; col++) {
+            if (isNeededAmountOfTokensToWin(getPlayerTokenCountFromCol(col))) {
                 return true;
             }
         }
 
-        if (getPlayerTokenCountFromDiag1() == 3) {
+        if (isNeededAmountOfTokensToWin(getPlayerTokenCountFromDiag1())) {
             return true;
         }
 
-        if (getPlayerTokenCountFromDiag2() == 3) {
+        if (isNeededAmountOfTokensToWin(getPlayerTokenCountFromDiag2())) {
             return true;
         }
 
@@ -86,7 +88,7 @@ contract TicTacToe {
     function getPlayerTokenCountFromRow(uint8 row) private returns (uint8){
         uint8 count = 0;
         if (isInBounds(row)) {
-            for (uint col = 0; col < 3; col++) {
+            for (uint col = 0; col < FIELD_SIZE; col++) {
                 int8 token = getToken(col, row);
                 if (token == currentTurn) {
                     count++;
@@ -99,7 +101,7 @@ contract TicTacToe {
     function getPlayerTokenCountFromCol(uint8 col) private returns (uint8){
         uint8 count = 0;
         if (isInBounds(col)) {
-            for (uint row = 0; row < 3; row++) {
+            for (uint row = 0; row < FIELD_SIZE; row++) {
                 int8 token = getToken(col, row);
                 if (token == currentTurn) {
                     count++;
@@ -151,6 +153,10 @@ contract TicTacToe {
         return count;
     }
 
+    function isNeededAmountOfTokensToWin(uint8 amountOfTokens) private returns (bool){
+        return amountOfTokens == FIELD_SIZE;
+    }
+
     function getToken(uint8 x, uint8 y) private returns (int8){
         if (!isInBounds(x) || !isInBounds(y)) {
             return - 1;
@@ -163,15 +169,13 @@ contract TicTacToe {
     }
 
     function resetGame() private {
-        player1 = 0x0;
-        player2 = 0x0;
         currentTurn = - 1;
         board = [[- 1, - 1, - 1], [- 1, - 1, - 1], [- 1, - 1, - 1]];
         players = [0x0, 0x0];
     }
 
     function isInBounds(uint8 x) private returns (bool) {
-        return x >= 0 && x < 3;
+        return x >= 0 && x < FIELD_SIZE;
         //TODO hardcoded
     }
 
