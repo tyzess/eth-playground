@@ -6,7 +6,7 @@
 describe("TicTacToe", function () {
 
     before(function (done) {
-        this.timeout(1);
+        this.timeout(0);
         EmbarkSpec.sim.createA
         EmbarkSpec.deployAll({"TicTacToe": {}}, done);
     });

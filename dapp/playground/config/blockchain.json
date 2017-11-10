@@ -1,4 +1,4 @@
-{ 
+{
   "privatenet_a": {
     "enabled": true,
     "networkType": "custom",
@@ -11,11 +11,11 @@
     "nodiscover": true,
     "wsOrigins": "http://localhost:8000",
     "account": {
-      "address" : "0xa156b1415502444184670193a8de2b2d7c745634",
+      "address": "0xa156b1415502444184670193a8de2b2d7c745634",
       "password": "config/privatenet/password"
     },
-    "genesisBlock": "../../geth/genesis.json",  
-    "port":30301
+    "genesisBlock": "../../geth/genesis.json",
+    "port": 30301
   },
   "privatenet_b": {
     "enabled": true,
@@ -29,14 +29,12 @@
     "nodiscover": true,
     "wsOrigins": "http://localhost:8000",
     "account": {
-      "address" : "0xa156b1415502444184670193a8de2b2d7c745634",
+      "address": "0xa156b1415502444184670193a8de2b2d7c745634",
       "password": "config/privatenet/password"
     },
-    "genesisBlock": "../../geth/genesis.json",   
-    "port":30302
+    "genesisBlock": "../../geth/genesis.json",
+    "port": 30302
   },
-
-
   "development": {
     "enabled": true,
     "networkType": "custom",
@@ -73,6 +71,5 @@
     "account": {
       "password": "config/livenet/password"
     }
-  },
-
+  }
 }
