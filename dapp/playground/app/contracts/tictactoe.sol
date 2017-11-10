@@ -63,7 +63,7 @@ contract TicTacToe {
         board[x][y] = currentTurn;
         errMessage = "board set";
 
-        if (playerWon()) {
+        if (false) {// (playerWon()) {
             errMessage = "won";
             payOutWinner(getCurrentPlayer());
             resetGame();
