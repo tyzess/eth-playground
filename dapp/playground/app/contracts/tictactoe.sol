@@ -18,6 +18,7 @@ contract TicTacToe {
     uint8 public playerCount;
 
     string public errMessage;
+    address public lastJoin;
 
     address public owner;
 
@@ -44,9 +45,9 @@ contract TicTacToe {
             return false;
         }
 
+        lastJoin = msg.sender;
         players[playerCount] = msg.sender;
         playerCount++;
-        errMessage = msg.sender;
         if (allPlayersJoined()) {
             currentTurn = 1;
         }
