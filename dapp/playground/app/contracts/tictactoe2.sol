@@ -61,27 +61,27 @@ contract TicTacToe2 {
         return playerCount == MAX_PLAYERS;
     }
 
-    function setToken(uint8 x, uint8 y) public returns (bool) {
-
-        if (!isInBounds(x) || !isInBounds(y)) {
-            return false;
-        }
-
-        if (isAlreadySet(x, y)) {
-            return false;
-        }
-
-        board[x][y] = currentTurn;
-
-        if (playerWon()) {
-            payOutWinner(getCurrentPlayer());
-            resetGame();
-        }
-        else {
-            nextTurn();
-        }
-
-        return true;
-    }
+    //    function setToken(uint8 x, uint8 y) public returns (bool) {
+    //
+    //        if (!isInBounds(x) || !isInBounds(y)) {
+    //            return false;
+    //        }
+    //
+    //        if (isAlreadySet(x, y)) {
+    //            return false;
+    //        }
+    //
+    //        board[x][y] = currentTurn;
+    //
+    //        if (playerWon()) {
+    //            payOutWinner(getCurrentPlayer());
+    //            resetGame();
+    //        }
+    //        else {
+    //            nextTurn();
+    //        }
+    //
+    //        return true;
+    //    }
 
 }
