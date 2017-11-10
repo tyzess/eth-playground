@@ -62,17 +62,17 @@ contract TicTacToe {
         }
 
         board[x][y] = currentTurn;
-        errMessage = "board set";
-
-        if (false) {// (playerWon()) {
-            errMessage = "won";
-            payOutWinner(getCurrentPlayer());
-            resetGame();
-        }
-        else {
-            errMessage = "next turn";
-            nextTurn();
-        }
+//        errMessage = "board set";
+//
+//        if (false) {// (playerWon()) {
+//            errMessage = "won";
+//            payOutWinner(getCurrentPlayer());
+//            resetGame();
+//        }
+//        else {
+//            errMessage = "next turn";
+//            nextTurn();
+//        }
 
         return true;
     }
