@@ -1,12 +1,13 @@
-var assert = require('assert');
-var Embark = require('embark');
-var EmbarkSpec = Embark.initTests();
-var web3 = EmbarkSpec.web3;
+// var assert = require('assert');
+// var Embark = require('embark');
+// var EmbarkSpec = Embark.initTests();
+// var web3 = EmbarkSpec.web3;
 
 describe("TicTacToe", function () {
 
     before(function (done) {
         this.timeout(1);
+        EmbarkSpec.sim.createA
         EmbarkSpec.deployAll({"TicTacToe": {}}, done);
     });
 
