@@ -47,7 +47,7 @@ contract TicTacToe {
 
         lastJoin = msg.sender;
         players[playerCount] = msg.sender;
-        playerCount++;
+        playerCount = playerCount + 1;
         if (allPlayersJoined()) {
             currentTurn = 1;
         }
@@ -71,7 +71,7 @@ contract TicTacToe {
         }
 
         board[x][y] = currentTurn;
-        //nextTurn();
+        nextTurn();
 //        errMessage = "board set";
 //
 //        if (false) {// (playerWon()) {
@@ -154,7 +154,7 @@ contract TicTacToe {
     }
 
     function nextTurn() private {
-        currentTurn++;
+        currentTurn = currentTurn + 1;
         if (currentTurn > MAX_PLAYERS) {
             currentTurn = 0;
         }
