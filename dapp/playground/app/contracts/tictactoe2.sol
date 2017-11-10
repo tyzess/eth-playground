@@ -100,4 +100,72 @@ contract TicTacToe2 {
         return uint(board[x][y]);
     }
 
+    function getPlayerTokenCountFromRow(uint8 row) private returns (uint8){
+        uint8 count = 0;
+        if (isInBounds(row)) {
+            for (uint8 col = 0; col < FIELD_SIZE; col++) {
+                uint token = getToken(col, row);
+                if (token == uint(currentToken)) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    function getPlayerTokenCountFromCol(uint8 col) private returns (uint8){
+        uint8 count = 0;
+        if (isInBounds(col)) {
+            for (uint8 row = 0; row < FIELD_SIZE; row++) {
+                uint token = getToken(col, row);
+                if (token == uint(currentToken)) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    function getPlayerTokenCountFromDiag1() private returns (uint8){
+        uint8 count = 0;
+
+        uint token = getToken(0, 0);
+        if (token == uint(currentToken)) {
+            count++;
+        }
+
+        token = getToken(1, 1);
+        if (token == uint(currentToken)) {
+            count++;
+        }
+
+        token = getToken(2, 2);
+        if (token == uint(currentToken)) {
+            count++;
+        }
+
+        return count;
+    }
+
+    function getPlayerTokenCountFromDiag2() private returns (uint8){
+        uint8 count = 0;
+
+        uint token = getToken(2, 0);
+        if (token == uint(currentToken)) {
+            count++;
+        }
+
+        token = getToken(1, 1);
+        if (token == uint(currentToken)) {
+            count++;
+        }
+
+        token = getToken(0, 2);
+        if (token == uint(currentToken)) {
+            count++;
+        }
+
+        return count;
+    }
+
 }
