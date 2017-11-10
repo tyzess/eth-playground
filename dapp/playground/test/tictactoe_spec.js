@@ -7,7 +7,7 @@ describe("TicTacToe", function () {
 
     before(function (done) {
         this.timeout(0);
-        EmbarkSpec.deployAll({}, done);
+        EmbarkSpec.deployAll({"TicTacToe": {}}, done);
     });
 
     it("should call constructor", function (done) {
