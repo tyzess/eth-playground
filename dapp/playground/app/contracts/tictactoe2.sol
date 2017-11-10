@@ -1,7 +1,7 @@
 pragma solidity ^0.4.0;
 
 
-contract tictactoe2 {
+contract TicTacToe2 {
 
     enum Token {NONE, X, O}
     Token currentToken = Token.NONE;
@@ -9,7 +9,7 @@ contract tictactoe2 {
     mapping (uint8 => mapping (uint8 => Token)) board;
 
 
-    function tictactoe2() public {
+    function TicTacToe2() public {
         resetGame();
     }
 
