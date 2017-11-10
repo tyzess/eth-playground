@@ -40,9 +40,9 @@ contract TicTacToe2 {
         }
     }
 
-    function join() public payable returns (bool){
+    function join() public payable {
         if (msg.value != PRIZE || allPlayersJoined()) {
-            return false;
+            throw;
         }
 
         playerCount++;
@@ -51,35 +51,46 @@ contract TicTacToe2 {
         if (allPlayersJoined()) {
             currentToken = Token.X;
         }
-
-        return true;
     }
 
     function allPlayersJoined() public view returns (bool) {
         return playerCount == MAX_PLAYERS;
     }
 
-    //    function setToken(uint8 x, uint8 y) public returns (bool) {
-    //
-    //        if (!isInBounds(x) || !isInBounds(y)) {
-    //            return false;
-    //        }
-    //
-    //        if (isAlreadySet(x, y)) {
-    //            return false;
-    //        }
-    //
-    //        board[x][y] = currentTurn;
-    //
-    //        if (playerWon()) {
-    //            payOutWinner(getCurrentPlayer());
-    //            resetGame();
-    //        }
-    //        else {
-    //            nextTurn();
-    //        }
-    //
-    //        return true;
-    //    }
+    function setToken(uint8 x, uint8 y) public returns (bool) {
+
+        if (!isInBounds(x) || !isInBounds(y)) {
+            return false;
+        }
+
+        if (isAlreadySet(x, y)) {
+            return false;
+        }
+
+        board[x][y] = currentToken;
+
+        nextTurn();
+
+
+        return true;
+    }
+
+    function nextTurn() private {
+        uint token = uint(currentToken);
+        token++;
+        if (token > MAX_PLAYERS) {
+            token = uint(Token.X);
+        }
+
+        currentToken = token;
+    }
+
+    function isInBounds(uint8 i) private returns (bool) {
+        return x < BOARD_SIZE;
+    }
+
+    function isAlreadySet(uint8 x, uint8 y) private returns (bool){
+        return board[x][y] != Token.NONE;
+    }
 
 }
