@@ -62,6 +62,7 @@ contract TicTacToe {
         }
 
         board[x][y] = currentTurn;
+        nextTurn();
 //        errMessage = "board set";
 //
 //        if (false) {// (playerWon()) {
