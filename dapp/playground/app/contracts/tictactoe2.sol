@@ -42,7 +42,7 @@ contract TicTacToe2 {
 
     function join() public payable {
         if (msg.value != PRIZE || allPlayersJoined()) {
-            throw;
+            revert();
         }
 
         playerCount++;
@@ -86,7 +86,7 @@ contract TicTacToe2 {
     }
 
     function isInBounds(uint8 i) private returns (bool) {
-        return x < BOARD_SIZE;
+        return i < BOARD_SIZE;
     }
 
     function isAlreadySet(uint8 x, uint8 y) private returns (bool){
