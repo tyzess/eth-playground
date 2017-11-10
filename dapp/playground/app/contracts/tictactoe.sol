@@ -93,11 +93,11 @@ contract TicTacToe {
             }
         }
 
-        if(getToken(0, 0) == currentTurn && getToken(1, 1) == currentTurn && getToken(2, 2) == currentTurn$) {
+        if(getToken(0, 0) == currentTurn && getToken(1, 1) == currentTurn && getToken(2, 2) == currentTurn) {
             return true;
         }
 
-        if(getToken(2, 0) == currentTurn && getToken(1, 1) == currentTurn && getToken(0, 2) == currentTurn$) {
+        if(getToken(2, 0) == currentTurn && getToken(1, 1) == currentTurn && getToken(0, 2) == currentTurn) {
             return true;
         }
 
