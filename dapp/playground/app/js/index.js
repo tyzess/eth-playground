@@ -11,11 +11,8 @@ $(document).ready(function () {
 
     $("#tictactoe button.start").click(function () {
         console.log("Listening");
-        var newPlayerEvents = TicTacToe.events.NewPlayer({}, {fromBlock: 0, toBlock: 'latest'});
+        TicTacToe.events.NewPlayer({}, function(res) {console.log(res)});
 
-        newPlayerEvents.watch(function (error, result) {
-            console.log("Player joined: " + result.args.newPlayer);
-        });
     });
 
     $("#tictactoe button.join").click(function () {
