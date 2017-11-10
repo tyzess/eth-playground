@@ -120,8 +120,8 @@ contract TicTacToe {
         currentTurn = 0;
         playerCount = 0;
         players = [0x0, 0x0];
-        for (uint i = 0; i < FIELD_SIZE; i++) {
-            for (uint j = 0; j < FIELD_SIZE; j++) {
+        for (uint8 i = 0; i < FIELD_SIZE; i++) {
+            for (uint8 j = 0; j < FIELD_SIZE; j++) {
                 board[i][j] = 0;
             }
         }
