@@ -82,7 +82,7 @@ contract TicTacToe2 {
             token = uint(Token.X);
         }
 
-        currentToken = token;
+        currentToken = Token(token);
     }
 
     function isInBounds(uint8 i) private returns (bool) {
