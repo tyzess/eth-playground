@@ -3,25 +3,26 @@ pragma solidity ^0.4.7;
 
 contract TicTacToe {
 
-    int8 version = 4;
+    int8 public version = 77;
 
     address[] players = [0x0, 0x0];
 
     uint8[][] board = new uint8[][](3);
 
     uint8 public MAX_PLAYERS = 2;
-
     uint8 public FIELD_SIZE = 3;
+    uint256 public PRICE = 100;
 
-    uint8 public currentTurn = 0;
+    uint8 public currentTurn;
+    uint8 public playerCount;
 
-    uint8 public playerCount = 0;
-
-    uint256 public price = 100;
+    string public errMessage;
 
     address public owner;
 
-    event NewPlayer(address newPlayer);
+    function clearMessage() public {
+        errMessage = "----";
+    }
 
     function TicTacToe() public {
         owner = msg.sender;
@@ -29,13 +30,14 @@ contract TicTacToe {
     }
 
     function join() public payable returns (bool){
-        if (msg.value != price || allPlayersJoined()) {
+        if (msg.value != PRICE || allPlayersJoined()) {
+            errMessage = "could not join";
             return false;
         }
 
         players[playerCount] = msg.sender;
         playerCount++;
-        NewPlayer(msg.sender);
+        errMessage = "joined!";
         if (allPlayersJoined()) {
             currentTurn = 1;
         }
@@ -44,24 +46,30 @@ contract TicTacToe {
 
     function setToken(uint8 x, uint8 y) public returns (bool) {
         if (getCurrentPlayer() != msg.sender) {
+            errMessage = "Not current player";
             return false;
         }
 
         if (!isInBounds(x) || !isInBounds(y)) {
+            errMessage = "not in bound";
             return false;
         }
 
         if (isAlreadySet(x, y)) {
+            errMessage = "already set";
             return false;
         }
 
         board[x][y] = currentTurn;
+        errMessage = "board set";
 
         if (playerWon()) {
+            errMessage = "won";
             payOutWinner(getCurrentPlayer());
             resetGame();
         }
         else {
+            errMessage = "next turn";
             nextTurn();
         }
 
@@ -69,99 +77,31 @@ contract TicTacToe {
     }
 
     function playerWon() private view returns (bool){
-        for (uint8 row = 0; row < FIELD_SIZE; row++) {
-            if (isNeededAmountOfTokensToWin(getPlayerTokenCountFromRow(row))) {
-                return true;
+        for (uint8 i = 0; i < FIELD_SIZE; i++) {
+            uint8 countRow = 0;
+            uint8 countColumn = 0;
+            for (uint8 j = 0; j < FIELD_SIZE; j++) {
+                if (getToken(i, j) == currentTurn) {
+                    countRow++;
+                }
+                if (getToken(j, i) == currentTurn) {
+                    countColumn++;
+                }
+                if(countRow >= FIELD_SIZE || countColumn >= FIELD_SIZE) {
+                    return true;
+                }
             }
         }
 
-        for (uint8 col = 0; col < FIELD_SIZE; col++) {
-            if (isNeededAmountOfTokensToWin(getPlayerTokenCountFromCol(col))) {
-                return true;
-            }
-        }
-
-        if (isNeededAmountOfTokensToWin(getPlayerTokenCountFromDiag1())) {
+        if(getToken(0, 0) == currentTurn && getToken(1, 1) == currentTurn && getToken(2, 2) == currentTurn$) {
             return true;
         }
 
-        if (isNeededAmountOfTokensToWin(getPlayerTokenCountFromDiag2())) {
+        if(getToken(2, 0) == currentTurn && getToken(1, 1) == currentTurn && getToken(0, 2) == currentTurn$) {
             return true;
         }
 
         return false;
-    }
-
-    function getPlayerTokenCountFromRow(uint8 row) private view returns (uint8){
-        uint8 count = 0;
-        if (isInBounds(row)) {
-            for (uint8 col = 0; col < FIELD_SIZE; col++) {
-                uint8 token = getToken(col, row);
-                if (token == currentTurn) {
-                    count++;
-                }
-            }
-        }
-        return count;
-    }
-
-    function getPlayerTokenCountFromCol(uint8 col) private view returns (uint8){
-        uint8 count = 0;
-        if (isInBounds(col)) {
-            for (uint8 row = 0; row < FIELD_SIZE; row++) {
-                uint8 token = getToken(col, row);
-                if (token == currentTurn) {
-                    count++;
-                }
-            }
-        }
-        return count;
-    }
-
-    function getPlayerTokenCountFromDiag1() private view returns (uint8){
-        uint8 count = 0;
-
-        uint8 token = getToken(0, 0);
-        if (token == currentTurn) {
-            count++;
-        }
-
-        token = getToken(1, 1);
-        if (token == currentTurn) {
-            count++;
-        }
-
-        token = getToken(2, 2);
-        if (token == currentTurn) {
-            count++;
-        }
-
-        return count;
-    }
-
-    function getPlayerTokenCountFromDiag2() private view returns (uint8){
-        uint8 count = 0;
-
-        uint8 token = getToken(2, 0);
-        if (token == currentTurn) {
-            count++;
-        }
-
-        token = getToken(1, 1);
-        if (token == currentTurn) {
-            count++;
-        }
-
-        token = getToken(0, 2);
-        if (token == currentTurn) {
-            count++;
-        }
-
-        return count;
-    }
-
-    function isNeededAmountOfTokensToWin(uint8 amountOfTokens) private view returns (bool){
-        return amountOfTokens == FIELD_SIZE;
     }
 
     function getToken(uint8 x, uint8 y) public constant returns (uint8){
@@ -172,11 +112,12 @@ contract TicTacToe {
     }
 
     function payOutWinner(address winner) private {
-        winner.transfer(price * 2);
+        winner.transfer(PRICE * 2);
     }
 
-    function resetGame() private {
+    function resetGame() public {
         currentTurn = 0;
+        playerCount = 0;
         players = [0x0, 0x0];
         for (uint i = 0; i < board.length; i++) {
             board[i] = new uint8[](3);
@@ -185,18 +126,17 @@ contract TicTacToe {
 
     function isInBounds(uint8 x) private view returns (bool) {
         return x >= 0 && x < FIELD_SIZE;
-        //TODO hardcoded
     }
 
     function isAlreadySet(uint8 x, uint8 y) private view returns (bool){
         return board[x][y] != 0;
     }
 
-    function allPlayersJoined() public constant returns (bool) {
+    function allPlayersJoined() public view returns (bool) {
         return playerCount == MAX_PLAYERS;
     }
 
-    function getCurrentPlayer() public constant returns (address) {
+    function getCurrentPlayer() public view returns (address) {
         return players[currentTurn];
     }
 
