@@ -11,26 +11,32 @@ describe("TicTacToe", function () {
     });
 
     it("should call constructor", function (done) {
-
-        TicTacToe.MAX_PLAYERS(function (err, result) {
-            assert.equal(result.toNumber(), 2);
-            done();
-        });
-
-        TicTacToe.FIELD_SIZE(function (err, result) {
-            assert.equal(result.toNumber(), 3);
-            done();
-        });
-
-        TicTacToe.currentTurn(function (err, result) {
-            assert.equal(result.toNumber(), 0);
-            done();
-        });
-
-        TicTacToe.playerCount(function (err, result) {
-            assert.equal(result.toNumber(), 0);
-            done();
-        });
+        TicTacToe.methods.MAX_PLAYERS().call()
+            .then(function (value) {
+                assert.equal(value.toNumber(), 2);
+            })
+            .catch(function (err) {
+                assert.equal(err, undefined);
+            });
+        // TicTacToe.MAX_PLAYERS(function (err, result) {
+        //     assert.equal(result.toNumber(), 2);
+        //     done();
+        // });
+        //
+        // TicTacToe.FIELD_SIZE(function (err, result) {
+        //     assert.equal(result.toNumber(), 3);
+        //     done();
+        // });
+        //
+        // TicTacToe.currentTurn(function (err, result) {
+        //     assert.equal(result.toNumber(), 0);
+        //     done();
+        // });
+        //
+        // TicTacToe.playerCount(function (err, result) {
+        //     assert.equal(result.toNumber(), 0);
+        //     done();
+        // });
     });
 
     // it("set storage value", function (done) {
