@@ -41,8 +41,8 @@ contract TicTacToe2 {
             }
         }
         playerCount = 0;
-        tokenToPlayer[Token.X] = 0x0;
-        tokenToPlayer[Token.O] = 0x0;
+        tokenToPlayer[uint(Token.X)] = 0x0;
+        tokenToPlayer[uint(Token.O)] = 0x0;
     }
 
     function join() public payable {
