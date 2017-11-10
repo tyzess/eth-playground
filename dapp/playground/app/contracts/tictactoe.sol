@@ -46,7 +46,7 @@ contract TicTacToe {
 
         players[playerCount] = msg.sender;
         playerCount++;
-        errMessage = "joined!";
+        errMessage = msg.sender;
         if (allPlayersJoined()) {
             currentTurn = 1;
         }
