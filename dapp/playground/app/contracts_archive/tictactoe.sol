@@ -5,7 +5,7 @@ contract TicTacToe {
 
     address[] players = [0x0, 0x0];
 
-    uint8[][] board = new uint8[][](3);
+    mapping (uint8 => mapping (uint8 => uint8)) board;
 
     uint8 public MAX_PLAYERS = 2;
 
@@ -66,7 +66,7 @@ contract TicTacToe {
         return true;
     }
 
-    function playerWon() private view returns (bool){
+    function playerWon() private returns (bool){
         for (uint8 row = 0; row < FIELD_SIZE; row++) {
             if (isNeededAmountOfTokensToWin(getPlayerTokenCountFromRow(row))) {
                 return true;
@@ -90,7 +90,7 @@ contract TicTacToe {
         return false;
     }
 
-    function getPlayerTokenCountFromRow(uint8 row) private view returns (uint8){
+    function getPlayerTokenCountFromRow(uint8 row) private returns (uint8){
         uint8 count = 0;
         if (isInBounds(row)) {
             for (uint8 col = 0; col < FIELD_SIZE; col++) {
@@ -103,7 +103,7 @@ contract TicTacToe {
         return count;
     }
 
-    function getPlayerTokenCountFromCol(uint8 col) private view returns (uint8){
+    function getPlayerTokenCountFromCol(uint8 col) private returns (uint8){
         uint8 count = 0;
         if (isInBounds(col)) {
             for (uint8 row = 0; row < FIELD_SIZE; row++) {
@@ -116,7 +116,7 @@ contract TicTacToe {
         return count;
     }
 
-    function getPlayerTokenCountFromDiag1() private view returns (uint8){
+    function getPlayerTokenCountFromDiag1() private returns (uint8){
         uint8 count = 0;
 
         uint8 token = getToken(0, 0);
@@ -137,7 +137,7 @@ contract TicTacToe {
         return count;
     }
 
-    function getPlayerTokenCountFromDiag2() private view returns (uint8){
+    function getPlayerTokenCountFromDiag2() private returns (uint8){
         uint8 count = 0;
 
         uint8 token = getToken(2, 0);
@@ -158,7 +158,7 @@ contract TicTacToe {
         return count;
     }
 
-    function isNeededAmountOfTokensToWin(uint8 amountOfTokens) private view returns (bool){
+    function isNeededAmountOfTokensToWin(uint8 amountOfTokens) private returns (bool){
         return amountOfTokens == FIELD_SIZE;
     }
 
@@ -181,12 +181,12 @@ contract TicTacToe {
         }
     }
 
-    function isInBounds(uint8 x) private view returns (bool) {
+    function isInBounds(uint8 x) private returns (bool) {
         return x >= 0 && x < FIELD_SIZE;
         //TODO hardcoded
     }
 
-    function isAlreadySet(uint8 x, uint8 y) private view returns (bool){
+    function isAlreadySet(uint8 x, uint8 y) private returns (bool){
         return board[x][y] != 0;
     }
 
