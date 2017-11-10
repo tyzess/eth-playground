@@ -3,6 +3,8 @@ pragma solidity ^0.4.0;
 
 contract TicTacToe2 {
 
+    uint8 BOARD_SIZE = 3;
+
     enum Token {NONE, X, O}
     Token currentToken = Token.NONE;
 
@@ -15,8 +17,8 @@ contract TicTacToe2 {
 
     function resetGame() public {
         currentToken = Token.NONE;
-        for (uint x = 0; x < board.length; x++) {
-            for (uint y = 0; y < board.length; y++) {
+        for (uint8 x = 0; x < BOARD_SIZE; x++) {
+            for (uint8 y = 0; y < BOARD_SIZE; y++) {
                 board[x][y] = Token.NONE;
             }
         }
