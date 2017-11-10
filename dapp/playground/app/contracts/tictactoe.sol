@@ -21,11 +21,11 @@ contract TicTacToe {
 
     address public owner;
 
-    function getPlayer1() public returns (address){
+    function getPlayer1() public view returns (address){
         return players[0];
     }
 
-    function getPlayer2() public returns (address){
+    function getPlayer2() public view returns (address){
         return players[1];
     }
 
