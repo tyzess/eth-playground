@@ -6,7 +6,7 @@ var web3 = EmbarkSpec.web3;
 describe("TicTacToe", function () {
 
     before(function (done) {
-        this.timeout(0);
+        this.timeout(1);
         EmbarkSpec.deployAll({"TicTacToe": {}}, done);
     });
 
