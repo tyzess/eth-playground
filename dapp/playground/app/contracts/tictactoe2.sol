@@ -13,6 +13,8 @@ contract TicTacToe2 {
 
     uint public gameNumber = 0;
 
+    mapping (address => uint) deposits;
+
     enum Token {NONE, X, O}
     Token public currentToken = Token.NONE;
 
@@ -212,7 +214,7 @@ contract TicTacToe2 {
 
     function payOutWinner(address winner) private {
         gameNumber++;
-        winner.transfer(PRIZE * 2);
+        deposits[winner] += PRIZE * 2;
     }
 
 }
