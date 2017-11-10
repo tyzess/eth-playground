@@ -21,6 +21,14 @@ contract TicTacToe {
 
     address public owner;
 
+    function getPlayer1() public returns (address){
+        return players[0];
+    }
+
+    function getPlayer2() public returns (address){
+        return players[1];
+    }
+
     function clearMessage() public {
         errMessage = "----";
     }
@@ -38,7 +46,7 @@ contract TicTacToe {
 
         players[playerCount] = msg.sender;
         playerCount++;
-        errMessage = "joined!" + "dsfsdf";
+        errMessage = "joined!";
         if (allPlayersJoined()) {
             currentTurn = 1;
         }
