@@ -121,7 +121,9 @@ contract TicTacToe {
         playerCount = 0;
         players = [0x0, 0x0];
         for (uint i = 0; i < FIELD_SIZE; i++) {
-            board[i] = new uint8[](3);
+            for (uint j = 0; j < FIELD_SIZE; j++) {
+                board[i][j] = 0;
+            }
         }
     }
 
