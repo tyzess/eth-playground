@@ -76,7 +76,7 @@ contract TicTacToe2 {
 
         if (playerWon()) {
             payOutWinner(getCurrentPlayer());
-            resetGame();        }
+            resetGame();}
         else {
             nextTurn();
         }
@@ -211,8 +211,8 @@ contract TicTacToe2 {
     }
 
     function payOutWinner(address winner) private {
-        winner.transfer(PRIZE * 2);
         gameNumber++;
+        winner.transfer(PRIZE * 2);
     }
 
 }
