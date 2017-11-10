@@ -6,7 +6,7 @@
 "eip158Block": 0
 },
 "difficulty": "500",
-"gasLimit": "2100000",
+"gasLimit": "999999999",
 "alloc": {
 "a156b1415502444184670193a8de2b2d7c745634": 
     { "balance": "999999999999999" }
