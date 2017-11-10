@@ -1,0 +1,15 @@
+{
+  "name": "playground",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "test": "embark test"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "",
+  "devDependencies": {},
+  "dependencies": {
+    "embark": "^2.6.0"
+  }
+}
