@@ -18,11 +18,11 @@ contract TicTacToe2 {
 
     mapping (uint => address) tokenToPlayer;
 
-    function getPlayer1() public returns (address){
+    function getPlayer1() public view returns (address){
         return tokenToPlayer[uint(Token.X)];
     }
 
-    function getPlayer2() public returns (address){
+    function getPlayer2() public view returns (address){
         return tokenToPlayer[uint(Token.O)];
     }
 
