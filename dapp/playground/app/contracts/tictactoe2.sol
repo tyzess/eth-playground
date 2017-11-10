@@ -83,6 +83,10 @@ contract TicTacToe2 {
         return true;
     }
 
+    function getCurrentPlayer() public constant returns (address) {
+        return tokenToPlayer[uint(currentToken)];
+    }
+
     function nextTurn() private {
         uint token = uint(currentToken);
         token++;
