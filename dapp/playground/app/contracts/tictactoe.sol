@@ -7,7 +7,8 @@ contract TicTacToe {
 
     address[] players = [0x0, 0x0];
 
-    uint8[][] board = new uint8[][](3);
+    //uint8[][] board = new uint8[][](3);
+    mapping (uint8 => mapping (uint8 => uint8)) board;
 
     uint8 public MAX_PLAYERS = 2;
     uint8 public FIELD_SIZE = 3;
