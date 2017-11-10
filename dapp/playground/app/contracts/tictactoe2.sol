@@ -11,6 +11,8 @@ contract TicTacToe2 {
 
     uint public playerCount = 0;
 
+    uint public gameNumber = 0;
+
     enum Token {NONE, X, O}
     Token public currentToken = Token.NONE;
 
@@ -69,7 +71,13 @@ contract TicTacToe2 {
 
         board[x][y] = currentToken;
 
-        nextTurn();
+        if (playerWon()) {
+            payOutWinner(getCurrentPlayer());
+            resetGame();
+        }
+        else {
+            nextTurn();
+        }
 
 
         return true;
@@ -166,6 +174,35 @@ contract TicTacToe2 {
         }
 
         return count;
+    }
+
+    function playerWon() private returns (bool){
+        for (uint8 row = 0; row < BOARD_SIZE; row++) {
+            if (isNeededAmountOfTokensToWin(getPlayerTokenCountFromRow(row))) {
+                return true;
+            }
+        }
+
+        for (uint8 col = 0; col < BOARD_SIZE; col++) {
+            if (isNeededAmountOfTokensToWin(getPlayerTokenCountFromCol(col))) {
+                return true;
+            }
+        }
+
+        if (isNeededAmountOfTokensToWin(getPlayerTokenCountFromDiag1())) {
+            return true;
+        }
+
+        if (isNeededAmountOfTokensToWin(getPlayerTokenCountFromDiag2())) {
+            return true;
+        }
+
+        return false;
+    }
+
+    function payOutWinner(address winner) private {
+        winner.transfer(PRIZE * 2);
+        gameNumber++;
     }
 
 }
