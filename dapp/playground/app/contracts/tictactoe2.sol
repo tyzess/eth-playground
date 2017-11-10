@@ -40,6 +40,9 @@ contract TicTacToe2 {
                 board[x][y] = Token.NONE;
             }
         }
+        playerCount = 0;
+        tokenToPlayer[Token.X] = 0x0;
+        tokenToPlayer[Token.O] = 0x0;
     }
 
     function join() public payable {
@@ -73,8 +76,7 @@ contract TicTacToe2 {
 
         if (playerWon()) {
             payOutWinner(getCurrentPlayer());
-            resetGame();
-        }
+            resetGame();        }
         else {
             nextTurn();
         }
