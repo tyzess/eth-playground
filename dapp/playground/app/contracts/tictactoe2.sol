@@ -7,6 +7,8 @@ contract TicTacToe2 {
 
     uint8 public MAX_PLAYERS = 2;
 
+    uint public PRIZE = 100;
+
     uint public playerCount = 0;
 
     enum Token {NONE, X, O}
@@ -41,7 +43,7 @@ contract TicTacToe2 {
     }
 
     function join() public payable returns (bool){
-        if (msg.value != price || allPlayersJoined()) {
+        if (msg.value != PRIZE || allPlayersJoined()) {
             return false;
         }
 
