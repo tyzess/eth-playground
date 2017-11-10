@@ -200,6 +200,10 @@ contract TicTacToe2 {
         return false;
     }
 
+    function isNeededAmountOfTokensToWin(uint8 amountOfTokens) private returns (bool){
+        return amountOfTokens == BOARD_SIZE;
+    }
+
     function payOutWinner(address winner) private {
         winner.transfer(PRIZE * 2);
         gameNumber++;
