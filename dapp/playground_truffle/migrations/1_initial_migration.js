@@ -1,5 +1,5 @@
-var TicTacToe2 = artifacts.require("TicTacToe2.sol");
+var TicTacToe = artifacts.require("TicTacToe.sol");
 
 module.exports = function (deployer) {
-    deployer.deploy(TicTacToe2);
+    deployer.deploy(TicTacToe);
 };

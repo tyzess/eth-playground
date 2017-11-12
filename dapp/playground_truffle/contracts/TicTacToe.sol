@@ -1,7 +1,7 @@
 pragma solidity ^0.4.0;
 
 
-contract TicTacToe2 {
+contract TicTacToe {
 
     uint8 public BOARD_SIZE = 3;
 
@@ -29,7 +29,7 @@ contract TicTacToe2 {
     }
 
 
-    function TicTacToe2() public {
+    function TicTacToe() public {
         resetGame();
     }
 
