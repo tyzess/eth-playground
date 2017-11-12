@@ -109,7 +109,7 @@ contract TicTacToe2 {
 
     function getToken(uint8 x, uint8 y) public view returns (uint){
         if (!isInBounds(x) || !isInBounds(y)) {
-            uint(Token.NONE);
+            return uint(Token.NONE);
         }
         return uint(board[x][y]);
     }
