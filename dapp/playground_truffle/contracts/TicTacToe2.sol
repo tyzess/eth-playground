@@ -114,12 +114,12 @@ contract TicTacToe2 {
         return uint(board[x][y]);
     }
 
-    function getPlayerTokenCountFromRow(uint8 row) private returns (uint8){
+    function getPlayerTokenCountFromRow(uint8 row) private view returns (uint8){
         uint8 count = 0;
         if (isInBounds(row)) {
             for (uint8 col = 0; col < BOARD_SIZE; col++) {
                 uint token = getToken(col, row);
-                if (token == uint(currentToken)) {
+                if (isTokenValueEqualsCurrentToken(token)) {
                     count++;
                 }
             }
@@ -127,34 +127,35 @@ contract TicTacToe2 {
         return count;
     }
 
-    function getPlayerTokenCountFromCol(uint8 col) private returns (uint8){
+    function getPlayerTokenCountFromCol(uint8 col) private view returns (uint8){
         uint8 count = 0;
         if (isInBounds(col)) {
             for (uint8 row = 0; row < BOARD_SIZE; row++) {
                 uint token = getToken(col, row);
-                if (token == uint(currentToken)) {
+                if (isTokenValueEqualsCurrentToken(token)) {
                     count++;
                 }
             }
         }
         return count;
+    }
+
+    function isTokenValueEqualsCurrentToken(uint token) private view returns (bool){
+        return token == uint(currentToken);
     }
 
     function getPlayerTokenCountFromDiag1() private view returns (uint8){
         uint8 count = 0;
 
-        uint token = getToken(0, 0);
-        if (token == uint(currentToken)) {
+        if (isTokenValueEqualsCurrentToken(getToken(0, 0))) {
             count++;
         }
 
-        token = getToken(1, 1);
-        if (token == uint(currentToken)) {
+        if (isTokenValueEqualsCurrentToken(getToken(1, 1))) {
             count++;
         }
 
-        token = getToken(2, 2);
-        if (token == uint(currentToken)) {
+        if (isTokenValueEqualsCurrentToken(getToken(2, 2))) {
             count++;
         }
 
@@ -164,18 +165,16 @@ contract TicTacToe2 {
     function getPlayerTokenCountFromDiag2() private view returns (uint8){
         uint8 count = 0;
 
-        uint token = getToken(2, 0);
-        if (token == uint(currentToken)) {
+        if (isTokenValueEqualsCurrentToken(getToken(2, 0))) {
             count++;
         }
 
-        token = getToken(1, 1);
-        if (token == uint(currentToken)) {
+        if (isTokenValueEqualsCurrentToken(getToken(1, 1))) {
             count++;
         }
 
-        token = getToken(0, 2);
-        if (token == uint(currentToken)) {
+
+        if (isTokenValueEqualsCurrentToken(getToken(0, 2))) {
             count++;
         }
 
